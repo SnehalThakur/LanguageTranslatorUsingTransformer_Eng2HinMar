@@ -41,14 +41,14 @@ def getTextAndConvertToHindi(input_text="Hello Everyone. We are student of YCCE 
 def getTextAndConvertToMarathi(input_text="Hello Everyone. We are student of YCCE College."):
     model_checkpoint = "Helsinki-NLP/opus-mt-en-mr"
 
-    translator = pipeline("translation", model=model_checkpoint)
+    # translator = pipeline("translation", model=model_checkpoint)
     translation = Translator()
-    translatedOutput = translator(input_text)
+    # translatedOutput = translation(input_text, dest='mr')
     translatedMarOutput = translation.translate(input_text, dest='mr')
 
     print("translatedOutput Marathi - ", translatedMarOutput)
-    return translatedOutput[0]['translation_text']
-    # return translatedMarOutput.text
+    # return translatedOutput[0]['translation_text']
+    return translatedMarOutput.text
 
 
 def hinTextToAudio(mytext):
@@ -62,9 +62,9 @@ def hinTextToAudio(mytext):
 def marTextToAudio(mytext):
     tts = gTTS(text=mytext, lang='mr')
     print('marathi tts type - ', type(tts))
-    tts.save("marAudio.mp3")
-    playsound("marAudio.mp3")
-    return tts
+    # tts.save("marAudio.mp3")
+    # playsound("marAudio.mp3")
+    return tts.text
 
 
 def hindi_text_to_speech(trans_text, tld="co.in"):
